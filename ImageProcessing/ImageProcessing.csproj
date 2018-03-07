@@ -120,8 +120,9 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="OpenCvSharp">
-      <HintPath>..\..\..\..\Desktop\Workspace\OpenCvHololens\OpenCvSharp\bin\x86\Debug\OpenCvSharp.dll</HintPath>
+    <Reference Include="OpenCvSharp, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Desktop\Workspace\OpenCvHololens\OpenCvSharp\bin\x86\Release\OpenCvSharp.dll</HintPath>
     </Reference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">

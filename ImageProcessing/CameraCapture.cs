@@ -4,7 +4,7 @@
     using ImageProcessing.Processors;
     using ImageProcessing.VideoDeviceFinders;
     using Windows.Media.MediaProperties;
-    using OpenCvHololens;
+    using OpenCvSharp;
 
     public static class CameraCapture
     {
