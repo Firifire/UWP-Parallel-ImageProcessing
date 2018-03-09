@@ -30,7 +30,7 @@
         public T Result { get; protected set; }
 
         public async Task ProcessFramesAsync(
-          TimeSpan? timeout, CameraCapture.ImageProcess processMethod,
+          TimeSpan? timeout, CameraCapture.ImageProcess processMethod, bool repeat,
           Action<T> resultCallback = null)
         {
             await Task.Run(
@@ -75,12 +75,13 @@
                               {
                                   resultCallback(default(T));
                               }
-                              done = (this.Result != null) || (timedOut);
+                              done = (this.Result != null && !repeat) || (timedOut) || CameraCapture.Stop;
                           }
                           else
-                              done = (this.Result != null);
+                              done = (this.Result != null && !repeat) || CameraCapture.Stop;
                       }
                       await frameReader.StopAsync();
+                      CameraCapture.isRunning = false;
                   }
               }
             );

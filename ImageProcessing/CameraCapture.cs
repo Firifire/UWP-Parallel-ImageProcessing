@@ -11,7 +11,7 @@
         public delegate void ImageProcess(Mat src, out object[] result);
         public static async void StartImageProcessing(
       Action<object[]> resultCallback,
-      TimeSpan? timeout, ImageProcess processMethod)
+      TimeSpan? timeout, ImageProcess processMethod, bool repeat)
         {
             object[] result;
 
@@ -45,11 +45,14 @@
             }
             if (frameProcessor != null)
             {
-                await frameProcessor.ProcessFramesAsync(timeout, processMethod, resultCallback);
+                isRunning = true;
+                await frameProcessor.ProcessFramesAsync(timeout, processMethod, repeat, resultCallback);
                 
                 result = frameProcessor.Result;
             }
         }
         static CaptureFrameProcessor frameProcessor;
+        public static bool isRunning = false;
+        public static bool Stop = false;
     }
 }
