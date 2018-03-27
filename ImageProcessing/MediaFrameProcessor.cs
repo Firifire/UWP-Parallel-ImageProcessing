@@ -31,7 +31,7 @@
 
         public async Task ProcessFramesAsync(
           TimeSpan? timeout, CameraCapture.ImageProcess processMethod, bool repeat,
-          Action<T> resultCallback = null)
+          Action<T> resultCallback = null, Action preResultCallback = null)
         {
             await Task.Run(
               async () =>
@@ -57,8 +57,10 @@
 
                       while (!done)
                       {
+
                           using (var frame = frameReader.TryAcquireLatestFrame())
                           {
+                              preResultCallback?.Invoke();
                               if (frame != null)
                               {
                                   if (this.ProcessFrame(frame, processMethod) && (resultCallback != null))

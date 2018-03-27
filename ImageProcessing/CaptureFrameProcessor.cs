@@ -40,11 +40,9 @@
             {
                 try
                 {
-                   
                     if (this.buffer == null)
                     {
                         this.buffer = new byte[4 * bitmap.PixelHeight * bitmap.PixelWidth];
-                        sourceImageData = new Vec3b[bitmap.PixelHeight * bitmap.PixelWidth];
                     }
                     if (processMethod == null)
                     {
@@ -69,7 +67,6 @@
             return (this.Result != null);
         }
         Mat sourceImage;
-        Vec3b[] sourceImageData;
         SoftwareBitmap bitmap;
         byte[] buffer = null;
         static int i = 0;
