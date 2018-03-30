@@ -9,6 +9,7 @@
     using Windows.Media.Capture.Frames;
     using Windows.Graphics.Imaging;
     using Windows.Storage;
+    using Windows.Foundation;
     using Windows.Storage.Streams;
     using Windows.Storage.Pickers;
     using OpenCvSharp;
@@ -52,7 +53,9 @@
                     }
                     else
                     {
-                        bitmap.CopyToBuffer(buffer.AsBuffer());
+                        bmpBuffer = bitmap.LockBuffer(BitmapBufferAccessMode.ReadWrite);
+                        reference = bmpBuffer.CreateReference();
+                        //ComPtr<IMemoryBufferByteAccess> pBufferByteAccess;
                         sourceImage = new Mat(bitmap.PixelHeight, bitmap.PixelWidth, MatType.CV_8UC4, buffer);
                         //Cv2.CvtColor(sourceImage, sourceImage, ColorConversionCodes.BGRA2BGR); //<Remove>
                         processMethod(sourceImage, out _result);
@@ -66,6 +69,8 @@
             }
             return (this.Result != null);
         }
+        IMemoryBufferReference reference;
+        BitmapBuffer bmpBuffer;
         Mat sourceImage;
         SoftwareBitmap bitmap;
         byte[] buffer = null;

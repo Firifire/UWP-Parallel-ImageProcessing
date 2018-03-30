@@ -125,6 +125,12 @@
       <HintPath>..\..\..\..\Desktop\Workspace\OpenCvHololens\OpenCvSharp\bin\x86\Release\OpenCvSharp.dll</HintPath>
     </Reference>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OpenCVBridge\OpenCVBridge.vcxproj">
+      <Project>{d0ab4386-6864-4ef5-ba2c-665d2c95054b}</Project>
+      <Name>OpenCVBridge</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>
