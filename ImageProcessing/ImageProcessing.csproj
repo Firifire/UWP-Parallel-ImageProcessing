@@ -120,16 +120,9 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="OpenCvSharp, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Desktop\Workspace\OpenCvHololens\OpenCvSharp\bin\x86\Release\OpenCvSharp.dll</HintPath>
+    <Reference Include="OpenCvSharp">
+      <HintPath>..\..\..\Unity Projects\Data Augmentor\Assets\Plugins\x86\OpenCvSharp.dll</HintPath>
     </Reference>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\OpenCVBridge\OpenCVBridge.vcxproj">
-      <Project>{d0ab4386-6864-4ef5-ba2c-665d2c95054b}</Project>
-      <Name>OpenCVBridge</Name>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
